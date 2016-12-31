@@ -24,6 +24,6 @@ public class ExampleMod
 
     private void registerBicycle() {
         EntityRegistry.registerGlobalEntityID(EntityBicycle.class, "bicycle", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
-        RenderingRegistry.registerEntityRenderingHandler(EntityBicycle.class, new RenderHorse(new ModelHorse(), 1.0F));
+        RenderingRegistry.registerEntityRenderingHandler(EntityBicycle.class, new RenderBicycle());
     }
 }
