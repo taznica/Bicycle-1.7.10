@@ -1,9 +1,14 @@
 package com.example.examplemod;
 
-import net.minecraft.init.Blocks;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import net.minecraft.client.model.ModelChicken;
+import net.minecraft.client.model.ModelHorse;
+import net.minecraft.client.renderer.entity.RenderChicken;
+import net.minecraft.client.renderer.entity.RenderHorse;
 
 @Mod(modid = ExampleMod.MODID, version = ExampleMod.VERSION)
 public class ExampleMod
@@ -14,7 +19,11 @@ public class ExampleMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-		// some example code
-        System.out.println("DIRT BLOCK >> "+Blocks.dirt.getUnlocalizedName());
+        registerBicycle();
+    }
+
+    private void registerBicycle() {
+        EntityRegistry.registerGlobalEntityID(EntityBicycle.class, "bicycle", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
+        RenderingRegistry.registerEntityRenderingHandler(EntityBicycle.class, new RenderHorse(new ModelHorse(), 1.0F));
     }
 }
